@@ -12,12 +12,23 @@ import SwiftyJSON
 
 class ViewController: UIViewController
 {
-    var finalURL = ""
-    var currencySelected = ""
+    
+    deinit
+    {
+        print("Deinitialized")
+    }
+    
+
     //MARK: IBOUTLETS
     @IBOutlet weak var bitcoinPriceLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
     
+    
+    var finalURL = ""
+    var currencySelected = ""
+    
+    
+
 
     //MARK: LIFE CYCLE
     override func viewDidLoad()
@@ -27,6 +38,8 @@ class ViewController: UIViewController
         currencyPicker.dataSource = self
     }
 }
+
+
 // MARK: EXTENSION
 extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource
 {
@@ -49,32 +62,39 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource
     {
         currencySelected = CURRENCCY_SYMBOLE_ARRAY[row]
         finalURL = BASE_URL + CURRENCY_ARRAY[row]
-        getBitCoinData(url: finalURL)
+        updateUI(url: finalURL)
     }
 }
 
 extension ViewController {
     
-    func getBitCoinData(url: String)
+
+    func updateUI(url: String)
     {
-        Alamofire.request(url, method: .get)
-            .responseJSON { response in
-                                if response.result.isSuccess {
-                                    print("Sucess! Got the BitCoin data")
-                                    let bitCoinJSON : JSON = JSON(response.result.value!)
-                                    self.updateBitcoinData(json : bitCoinJSON)
-                                } else {
-                                    print("Error: \(String(describing: response.result.error))")
-                                    self.bitcoinPriceLabel.text = CONNECTION_ISSUE
-                                }
+        NetworkingServices.controller = self
+        // Uncertain : self est optionnel
+        /*NetworkingServices.getBitCoinData(urlString: url) { ask in
+            DispatchQueue.main.async { [weak self] in
+                guard let secureAsk = ask else { return }
+                self?.bitcoinPriceLabel.text = (self?.currencySelected ?? "") + " " + "\(secureAsk)"
             }
-    }
-    
-    func updateBitcoinData(json : JSON){
-        if let bitCoinResult = json["ask"].double{
-            self.bitcoinPriceLabel.text = self.currencySelected + " " + String(bitCoinResult)
-        }else{
-            self.bitcoinPriceLabel.text = PRIX_NON_DISPONIBLE
-        }
+        }*/
+        
+        //Certain que le controlleur est actif: self n'est pas optionnel
+        /*x.getBitCoinData(urlString: url) { ask in
+            DispatchQueue.main.async { [unowned self] in
+                guard let secureAsk = ask else { return }
+                self.bitcoinPriceLabel.text = self.currencySelected  + " " + "\(secureAsk)"
+            }
+        }*/
+        
+        
+        //Certain que le controlleur est actif: self n'est pas optionnel
+              NetworkingServices.getBitCoinData(urlString: url) { ask in
+                  DispatchQueue.main.async { 
+                      guard let secureAsk = ask else { return }
+                      self.bitcoinPriceLabel.text = self.currencySelected  + " " + "\(secureAsk)"
+                  }
+              }
     }
 }

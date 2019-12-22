@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0138CEFF23AEF6CF00196364 /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0138CEFE23AEF6CF00196364 /* NetworkingController.swift */; };
+		0138CF0123AEFD1C00196364 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0138CF0023AEFD1C00196364 /* TestViewController.swift */; };
 		01A5703323AE41E500917A1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5703223AE41E500917A1C /* Constants.swift */; };
 		63A618291C53C381007AF001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A618281C53C381007AF001 /* AppDelegate.swift */; };
 		63A6182B1C53C381007AF001 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6182A1C53C381007AF001 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0138CEFE23AEF6CF00196364 /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
+		0138CF0023AEFD1C00196364 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		01A5703223AE41E500917A1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		10E1A6E3CE434EE08404F846 /* Pods-BitcoinTicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitcoinTicker.release.xcconfig"; path = "Target Support Files/Pods-BitcoinTicker/Pods-BitcoinTicker.release.xcconfig"; sourceTree = "<group>"; };
 		1D49658B32A90E26BF2AB8ED /* Pods-BitcoinTicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitcoinTicker.debug.xcconfig"; path = "Target Support Files/Pods-BitcoinTicker/Pods-BitcoinTicker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -42,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0138CEFD23AEF6B000196364 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0138CEFE23AEF6CF00196364 /* NetworkingController.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		01A5702823AE409800917A1C /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				63A6182A1C53C381007AF001 /* ViewController.swift */,
+				0138CF0023AEFD1C00196364 /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -61,6 +74,7 @@
 		01A5702A23AE40B300917A1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0138CEFD23AEF6B000196364 /* Networking */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,7 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0138CF0123AEFD1C00196364 /* TestViewController.swift in Sources */,
 				63A6182B1C53C381007AF001 /* ViewController.swift in Sources */,
+				0138CEFF23AEF6CF00196364 /* NetworkingController.swift in Sources */,
 				63A618291C53C381007AF001 /* AppDelegate.swift in Sources */,
 				01A5703323AE41E500917A1C /* Constants.swift in Sources */,
 			);
